@@ -180,3 +180,76 @@ function getPayAmount() {
 处理思路：
 选中最外层需要被替换的条件逻辑，将其替换为卫语句。
 ```
+
+## 合并重复的条件片段
+如果一个函数体内有一些条件分支语句，而这些条件分支语句内部分散了一些重复的代码，那么就有必要进行合并去重工作
+```js
+// before:
+function main(currPage) {
+  if (currPage <= 0) {
+    currPage = 0;
+    jump(currPage); // 跳转
+  } else if (currPage >= totalPage) {
+    currPage = totalPage;
+    jump(currPage);
+  } else {
+    jump(currPage);
+  }
+}
+
+// after:
+function main(currPage) {
+  if (currPage <= 0) {
+    currPage = 0;
+  } else if (currPage >= totalPage) {
+    currPage = totalPage;
+  }
+  jump(currPage); // 把jump函数独立出来
+}
+```
+
+## numm、undefined和空值检查并设置默认值
+- 当创建新的变量或者调试API提供的数据时，需要检查数据是否为null、undefined和空值。
+```js
+// before:
+let test2 = ''
+if (test !== null || test !== undefined || test !== '') {
+  test2 = test;
+}
+
+// after:
+const test2 = test || ''; // 短路或设置默认值
+// 新语法，空值合并运算符(??)，当左侧操作数为空或未定义时返回右侧操作数，否则返回左侧操作数
+const foo = null ?? 'default string';
+console.log(foo); // 'default string'
+```
+
+## if 存在的简写
+```js
+// before:
+if (test === true) or if (test !== '') or if (test !== null) {}
+
+// after:
+if (test) {}
+```
+
+## if 执行函数/短路运算符(&&)
+```js
+// before:
+if (state) {
+  show();
+}
+
+// after:
+state && show();
+
+// before:
+let num = 0;
+if (state) {
+  num = 3;
+}
+
+// after:
+let num = 0;
+state && (num = 3);
+```
