@@ -14,7 +14,8 @@ module.exports = {
       '/gitstandard',
       '/gitmergestandard',
       '/jscommonerror',
-      '/htmlstandard'
+      '/htmlstandard',
+      '/jsperformance',
     ],
   }
 }
