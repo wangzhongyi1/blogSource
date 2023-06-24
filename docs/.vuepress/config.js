@@ -16,6 +16,7 @@ module.exports = {
       '/jscommonerror',
       '/htmlstandard',
       '/jsperformance',
+      '/npmprivateservebuild',
     ],
   }
 }
