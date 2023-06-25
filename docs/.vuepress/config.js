@@ -17,6 +17,7 @@ module.exports = {
       '/htmlstandard',
       '/jsperformance',
       '/jsperformance2',
+      '/npmprivateservebuild',
     ],
   }
 }
