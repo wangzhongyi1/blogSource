@@ -18,6 +18,7 @@ module.exports = {
       '/jsperformance',
       '/jsperformance2',
       '/npmprivateservebuild',
+      '/front-moniter-01'
     ],
   }
 }
